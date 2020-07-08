@@ -101,13 +101,73 @@ const data = [
 
   Hint: You will need to use createElement more than once here!
 
-  Your function should take either an object as its one argument, or 5 separate strings mapping to each property of an article object.
-
+  Your function should take either an object as its one argument, or 5 separate strings mapping to each property of an article object.*/
+  const articles = document.querySelector(".articles");
+  function articleMaker(obj) {
+    const article = document.createElement("div");
+    const h2 = document.createElement("h2");
+    const date = document.createElement("p");
+    const p1 = document.createElement("p");
+    const p2 = document.createElement("p");
+    const p3 = document.createElement("p");
+    const expandButton = document.createElement("span");
+  
+    article.appendChild(h2);
+    article.appendChild(date);
+    article.appendChild(p1);
+    article.appendChild(p2);
+    article.appendChild(p3);
+    article.appendChild(expandButton);
+  
+    article.classList.add("article");
+    article.classList.add("date");
+    expandButton.classList.add("expandButton");
+  
+    h2.textContent = obj.title;
+    date.textContent = obj.date;
+    p1.textContent = obj.firstParagraph;
+    p2.textContent = obj.secondParagraph;
+    p3.textContent = obj.thirdParagraph;
+    expandButton.textContent = "push me!";
+  
+    expandButton.addEventListener("click", (e) => {
+    article.classList.toggle("article-open");
+    
+    });
+    console.log(article);
+    return article;
+    
+  }
+  
+  
+/*
   Step 2: Add an event listener to the expandButton span. This listener should toggle the class 'article-open' on the 'article' div.
 
   Step 3: Don't forget to return something from your function!
 
-  Step 4: Outside your function, loop over the data. At each iteration you'll use your component to create an article and append it to the DOM inside the 'articles' div.
+  Step 4: Outside your function, loop over the data. At each iteration you'll use your component to create an article and append it to the DOM inside the 'articles' div.*/
 
-  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
+  for (let i = 0; i < data.length; i++) {
+    const article = articleMaker(data[i]);
+    articles.appendChild(article);
+  } 
+ 
+  /*Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+const newArticle = {
+  title: "A new article",
+  date: "June 7th, 2000",
+  firstParagraph: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere amet excepturi, molestiae incidunt animi laborum, hic magni dignissimos labore vitae, velit reiciendis quis cupiditate similique nam repellendus adipisci? Quia, eius.
+    Facere, corrupti ex perferendis deleniti facilis mollitia debitis, praesentium nesciunt iusto cumque quasi cum sapiente. Recusandae earum animi magnam id error, natus consequatur quo dicta accusantium libero labore ipsum minus?
+    Omnis nemo vero recusandae dolore nihil, deserunt debitis libero impedit accusamus necessitatibus neque, qui reiciendis praesentium nulla excepturi aut, corporis voluptatem consequuntur voluptate. In quae voluptatibus quas suscipit exercitationem impedit?`,
+
+  secondParagraph: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere amet excepturi, molestiae incidunt animi laborum, hic magni dignissimos labore vitae, velit reiciendis quis cupiditate similique nam repellendus adipisci? Quia, eius.
+    Facere, corrupti ex perferendis deleniti facilis mollitia debitis, praesentium nesciunt iusto cumque quasi cum sapiente. Recusandae earum animi magnam id error, natus consequatur quo dicta accusantium libero labore ipsum minus?
+    Omnis nemo vero recusandae dolore nihil, deserunt debitis libero impedit accusamus necessitatibus neque, qui reiciendis praesentium nulla excepturi aut, corporis voluptatem consequuntur voluptate. In quae voluptatibus quas suscipit exercitationem impedit?`,
+
+  thirdParagraph: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere amet excepturi, molestiae incidunt animi laborum, hic magni dignissimos labore vitae, velit reiciendis quis cupiditate similique nam repellendus adipisci? Quia, eius.
+    Facere, corrupti ex perferendis deleniti facilis mollitia debitis, praesentium nesciunt iusto cumque quasi cum sapiente. Recusandae earum animi magnam id error, natus consequatur quo dicta accusantium libero labore ipsum minus?
+    Omnis nemo vero recusandae dolore nihil, deserunt debitis libero impedit accusamus necessitatibus neque, qui reiciendis praesentium nulla excepturi aut, corporis voluptatem consequuntur voluptate. In quae voluptatibus quas suscipit exercitationem impedit?`,
+};
+
+data.push(newArticle);
